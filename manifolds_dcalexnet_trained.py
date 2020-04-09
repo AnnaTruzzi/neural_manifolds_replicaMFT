@@ -50,8 +50,8 @@ def main():
         transforms.ToTensor(),
         normalize]
 #        dataset = datasets.ImageFolder(offset, transform=transforms.Compose(tra))
-    train_dataset = datasets.CIFAR100('../data', train=True, download=True,
-                   transform=transform_train)
+    img_pth = '/data/ILSVRC2012/val_in_folders'
+    train_dataset = datasets.ImageFolder(img_pth,transform=transform_train)
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data = make_manifold_data(train_dataset, sampled_classes, examples_per_class, seed=0)
