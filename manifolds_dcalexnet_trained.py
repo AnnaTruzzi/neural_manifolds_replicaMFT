@@ -28,7 +28,7 @@ class ImageFolderWithPaths(datasets.ImageFolder):
 
 
 def main():
-    modelpth = '/home/CUSACKLAB/annatruzzi/deepcluster_models/alexnet/'
+    modelpth = '/home/annatruzzi/deepcluster_models/alexnet'
     checkpoint = torch.load(modelpth+'checkpoint_dc.pth.tar')['state_dict']
     checkpoint_new = OrderedDict()
     for k, v in checkpoint.items():
