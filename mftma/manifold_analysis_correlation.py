@@ -6,7 +6,7 @@ Classification and Geometry of General Perceptual Manifolds (Phys. Rev. X 2018)
 Separability and Geometry of Object Manifolds in Deep Neural Networks
 '''
 
-import numpy as np
+import autograd.numpy as np
 from scipy.linalg import qr
 from functools import partial
 import collections
