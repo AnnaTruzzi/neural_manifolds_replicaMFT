@@ -39,8 +39,8 @@ def main():
     model.load_state_dict(checkpoint_new)
     model.cuda()
     model = model.eval()
-    sampled_classes = 92
-    examples_per_class = 1
+    sampled_classes = 100
+    examples_per_class = 50
 
     ###############  CHANGE DATASET LOADING TO YOUR STIMULI #########
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
