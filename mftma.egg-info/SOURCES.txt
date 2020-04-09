@@ -1,0 +1,9 @@
+README.md
+setup.py
+mftma/alldata_dimension_analysis.py
+mftma/manifold_analysis_correlation.py
+mftma.egg-info/PKG-INFO
+mftma.egg-info/SOURCES.txt
+mftma.egg-info/dependency_links.txt
+mftma.egg-info/not-zip-safe
+mftma.egg-info/top_level.txt
