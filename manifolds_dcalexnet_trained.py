@@ -42,14 +42,18 @@ def main():
     sampled_classes = 100
     examples_per_class = 50
 
-    ###############  CHANGE DATASET LOADING TO YOUR STIMULI #########
-    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                                    std=[0.229, 0.224, 0.225])
-    transform_train = [transforms.Resize(256),
-        transforms.CenterCrop(224),
+    ###############  CHANGE DATASET LOADING TO YOUR STIMULI #########   
+    mean = (0.485, 0.456, 0.406)
+    std = (0.229, 0.224, 0.225)
+
+    transform_train = transforms.Compose([
+        transforms.RandomCrop(32, padding=4),
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomRotation(15),
         transforms.ToTensor(),
-        normalize]
-#        dataset = datasets.ImageFolder(offset, transform=transforms.Compose(tra))
+        transforms.Normalize(mean, std)
+    ])
+
     img_pth = '/data/ILSVRC2012/val_in_folders'
     train_dataset = datasets.ImageFolder(img_pth,transform=transform_train)
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
