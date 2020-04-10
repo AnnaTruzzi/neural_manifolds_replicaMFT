@@ -59,7 +59,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data = make_manifold_data(train_dataset, sampled_classes, examples_per_class, seed=0)
     data = [d.to(device) for d in data]
-    activations = extractor(model, data, layer_types=['Conv2d', 'Linear'])
+    activations = extractor(model, data, layer_types=['ReLu'])
     list(activations.keys())
 
     for layer, data, in activations.items():
