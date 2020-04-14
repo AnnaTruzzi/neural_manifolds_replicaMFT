@@ -62,7 +62,8 @@ def main():
     activations = extractor(model, data, layer_types=['ReLu'])
     list(activations.keys())
     with open ('/home/annatruzzi/neural_manifolds_replicaMFT/activations_dict_keys.txt','w') as file:
-        file.write(list(activations.keys()))
+        for element in list(activations.keys()):
+            file.write(str(element) + '; ')
 
     for layer, data, in activations.items():
         X = [d.reshape(d.shape[0], -1).T for d in data]
