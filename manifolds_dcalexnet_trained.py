@@ -61,6 +61,8 @@ def main():
     data = [d.to(device) for d in data]
     activations = extractor(model, data, layer_types=['ReLu'])
     list(activations.keys())
+    with open ('./activations_dict_keys.txt','w') as file:
+	file.write(list(activations.keys()))
 
     for layer, data, in activations.items():
         X = [d.reshape(d.shape[0], -1).T for d in data]
