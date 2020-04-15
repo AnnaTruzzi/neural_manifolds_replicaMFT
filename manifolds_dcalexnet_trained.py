@@ -1,6 +1,6 @@
 import numpy as np
 np.random.seed(0)
-
+import pickle 
 import matplotlib.pyplot as plt
 import torch
 from torchvision import datasets, transforms, models
