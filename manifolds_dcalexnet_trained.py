@@ -61,9 +61,6 @@ def main():
     data = [d.to(device) for d in data]
     activations = extractor(model, data, layer_types=['ReLU'])
     list(activations.keys())
-    with open ('/home/annatruzzi/neural_manifolds_replicaMFT/activations_dict_keys.txt','w') as file:
-        for element in list(activations.keys()):
-            file.write(str(element) + '; ')
 
     for layer, data, in activations.items():
         X = [d.reshape(d.shape[0], -1).T for d in data]
@@ -91,13 +88,20 @@ def main():
         r = np.mean(r)
         d = np.mean(d)
         print("{} capacity: {:4f}, radius {:4f}, dimension {:4f}, correlation {:4f}".format(k, a, r, d, r0))
-        
+
         # Store for later
         capacities.append(a)
         radii.append(r)
         dimensions.append(d)
         correlations.append(r0)
-
+    with open(('/home/annatruzzi/neural_manifolds_replicaMFT/features/manifolds_capacities_dcalexnet_trained.pickle'), 'wb') as handle:
+        pickle.dump(capacities, handle)
+    with open(('/home/annatruzzi/neural_manifolds_replicaMFT/features/manifolds_radii_dcalexnet_trained.pickle'), 'wb') as handle:
+        pickle.dump(radii, handle)
+    with open(('/home/annatruzzi/neural_manifolds_replicaMFT/features/manifolds_dimensions_dcalexnet_trained.pickle'), 'wb') as handle:
+        pickle.dump(dimensions, handle)
+    with open(('/home/annatruzzi/neural_manifolds_replicaMFT/features/manifolds_correlations_dcalexnet_trained.pickle'), 'wb') as handle:
+        pickle.dump(correlations, handle)
 
     ##### Plot the results
     fig, axes = plt.subplots(1, 4, figsize=(18, 4))
@@ -121,7 +125,7 @@ def main():
 
     plt.tight_layout()
     plt.show()
-    
+    fig.savefig('/home/annatruzzi/neural_manifolds_replicaMFT/plots/manifolds_dcalexnet_trained.png',bbox_inches='tight')
 
 
 if __name__ == '__main__':
