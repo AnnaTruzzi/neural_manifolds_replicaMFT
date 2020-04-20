@@ -116,10 +116,10 @@ def main():
     axes[2].set_ylabel(r'$D_M$', fontsize=18)
     axes[3].set_ylabel(r'$\rho_{center}$', fontsize=18)
 
-    axes[0].set_ylim(0.04,0.06)
-    axes[1].set_ylim(1.30,1.60)
-    axes[2].set_ylim(28,35)
-    axes[3].set_ylim(0.15,0.40)
+    axes[0].set_ylim(0.035,0.06)
+    axes[1].set_ylim(1.25,1.60)
+    axes[2].set_ylim(25,45)
+    axes[3].set_ylim(0.15,0.60)
 
     names = list(activations.keys())
     names = [n.split('_')[1] + ' ' + n.split('_')[2] for n in names]
